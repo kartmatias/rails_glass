@@ -1,0 +1,16 @@
+Pedido de Venda - 
+
+Endpoint 	                Funcionalidade
+POST /signup 	            Signup
+POST /auth/login 	        Login
+GET /auth/logout 	        Logout
+GET /produtos 	            List all produtos
+POST /produtos 	            Create a new produto
+GET /produtos/:id 	        Get a produto
+PUT /produtos/:id 	        Update a produto
+DELETE /produtos/:id 	    Delete a produto and its items
+GET /produtos/:id/items 	Get a produto item
+PUT /produtos/:id/items 	Update a produto item
+DELETE /produtos/:id/items  Delete a produto item
+
+
