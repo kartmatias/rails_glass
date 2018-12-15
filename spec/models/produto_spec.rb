@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Produto, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before { @produto = FactoryGirl.build(:produto) }
+  it { expect(@produto).to respond_to(:referencia)}
+  it { expect(@produto).to respond_to(:descricao)}
 end
