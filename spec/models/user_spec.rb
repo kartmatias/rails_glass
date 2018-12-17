@@ -1,10 +1,10 @@
 require 'rails_helper'
-require 'factory_girl_rails'
 
 RSpec.describe User, type: :model do
-  before { @user = FactoryGirl.build(:user) }
+  let(:user) { build(:user) }
 
-  it { expect(@user).to respond_to(:email)}
-  it { expect(@user).to respond_to(:encrypted_password)}
+  it { is_expected.to validade_presence_of(:email) }
+  it { is_expected.to validade_uniqueness_of(:email).case_insensitive }
+  it { is_expected.to validade_presence_of(:encrypted_password) }
 
 end

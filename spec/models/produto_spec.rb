@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Produto, type: :model do
-  before { @produto = FactoryGirl.build(:produto) }
-  it { expect(@produto).to respond_to(:referencia)}
-  it { expect(@produto).to respond_to(:descricao)}
+  let(:produto) { build(:produto) }
+
+  it { is_expected.to validade_presence_of(:referencia) }
+  it { is_expected.to validade_uniqueness_of(:referencia).case_insensitive }
+  it { is_expected.to validade_presence_of(:descricao) }
 end
