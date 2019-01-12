@@ -6,16 +6,16 @@ RSpec.describe 'Users API', type: :request do
     let(:headers) do
         {
             'Accept' => 'application/vnd.glass.v1',
-            'Content-Type' => Mime[:json].to_s,
-            'Authorization' => user.auth_token
+            'Content-Type' => Mime[:json].to_s
+            #'Authorization' => user.auth_token
         }
     end
 
-    before {host! 'api.taskmanager.dev'}
+    # before {host! 'api.taskmanager.dev'}
 
-    describe 'GET /users/:id' do
+    describe 'GET /api/v1/users/:id' do
         before do
-            get "/users/#{user_id}", params: {}, headers: headers
+            get "/api/v1/users/#{user_id}", params: {}, headers: headers
         end
 
         context 'when the user exists' do
@@ -36,9 +36,9 @@ RSpec.describe 'Users API', type: :request do
         end
     end
 
-    describe 'POST /users' do
+    describe 'POST /api/v1/users' do
         before do
-            post '/users', params: {user: user_params }.to_json, headers: headers
+            post '/api/v1/users', params: {user: user_params }.to_json, headers: headers
         end
 
         context 'when the request params are valid' do
@@ -66,9 +66,9 @@ RSpec.describe 'Users API', type: :request do
         end
     end
 
-    describe 'PUT /users/:id' do
+    describe 'PUT /api/v1/users/:id' do
         before do
-            put "/users/#{user_id}", params: {user: user_params }.to_json, headers: headers
+            put "/api/v1/users/#{user_id}", params: {user: user_params }.to_json, headers: headers
         end
 
         context 'when the request params are valid' do
@@ -94,9 +94,9 @@ RSpec.describe 'Users API', type: :request do
         end
     end
 
-    describe 'DELETE /users/:id' do
+    describe 'DELETE /api/v1/users/:id' do
         before do
-            delete "/users/#{user_id}", params: {}, headers: headers
+            delete "/api/v1/users/#{user_id}", params: {}, headers: headers
         end
 
         it 'returns status code 204' do
