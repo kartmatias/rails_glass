@@ -4,7 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates_presence_of :email
-  validates_presence_of :password
-  validates_presence_of :encrypted_password
+  #validates_presence_of :email
+  #validates_presence_of :password
+  #validates_presence_of :confirmation_password
+
+  validates_uniqueness_of :email
+  validates_uniqueness_of :auth_token
+
+  def info
+    "#{email} - #{created_at} - Token: #{Devise.friendly_token}"
+  end
 end
