@@ -18,4 +18,28 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe '#generate_authentication_token!' do
+
+    it 'generates a unique auth token' do
+      allow(Devise).to receive(:friendly_token).and_return('acb123xyzTOKEN')
+      user.generate_authentication_token!
+
+      expect(user.auth_token).to eq('acb123xyzTOKEN')
+
+    end
+    it 'generates another auth token when the current auth already has been taken' do
+
+      allow(Devise).to receive(:friendly_token).and_return('acb123xxxTOKEN', 'acb123xxxTOKEN', 'acb123zzzTOKEN')
+      existing_user = create(:user)
+
+      user.generate_authentication_token!
+
+      expect(user.auth_token).not_to eq(existing_user.auth_token)
+
+    end
+    # deixando o it 'texto' o rspec mostra como pendente
+    # it 'this test is incomplete'
+
+
+  end
 end
